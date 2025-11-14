@@ -47,7 +47,7 @@ function togglePreview() {
 <template>
     <section class="sticky top-0">
         <div class="bg-gray-50 p-4 space-y-4">
-            <div v-if="hasCharms" ref="previewArea" class="grid grid-cols-10 gap-4">
+            <div v-if="hasCharms" ref="previewArea" class="grid lg:grid-cols-10 grid-cols-4 gap-4">
                 <BraceletCharm
                     v-for="charm in braceletMakerStore.bracelet.charms"
                     :key="charm.id"
@@ -57,17 +57,17 @@ function togglePreview() {
                 />
             </div>
 
-            <p v-if="showPreview && !hasCharms" class="text-8xl font-serif uppercase text-center">
+            <p v-if="showPreview && !hasCharms" class="lg:text-8xl text-lg font-serif uppercase text-center">
                 bracelet preview
             </p>
 
-            <div class="flex justify-center items-center space-x-2">
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-2">
                 <button class="bg-gray-200 p-3" @click="braceletMakerStore.clearCharms">
                     Start over
                 </button>
-                <button class="bg-gray-200 p-3" @click="copyDesignCode">Copy design code</button>
-                <button class="bg-gray-200 p-3" @click="downloadPreview">Download Design</button>
-                <button class="bg-gray-200 p-3" @click="togglePreview">
+                <button class="bg-gray-200 p-3 lg:text-base text-xs" @click="copyDesignCode">Copy design code</button>
+                <button class="bg-gray-200 p-3 lg:text-base text-xs" @click="downloadPreview">Download Design</button>
+                <button class="bg-gray-200 p-3 lg:text-base text-xs" @click="togglePreview">
                     {{ showPreview ? 'Close' : 'Open' }} Preview
                 </button>
             </div>
