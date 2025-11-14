@@ -20,8 +20,16 @@ export const useBraceletMaker = defineStore('bracelet-maker', () => {
         bracelet.value.charms?.push(charm)
     }
 
+    const removeCharm = (charm: Charm) => {
+    	const index = bracelet.value.charms?.indexOf(charm)
+    	if (index !== undefined && index > -1) {
+    	    bracelet.value.charms?.splice(index, 1)
+    	}
+    }
+
     return {
         bracelet,
         addCharm,
+        removeCharm,
     }
 })

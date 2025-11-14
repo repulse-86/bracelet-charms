@@ -22,6 +22,7 @@ const braceletMakerStore = useBraceletMaker()
                     :charm="charm"
                     :metal="metalSwitchStore.selectedMetal"
                     class="min-w-30 min-h-30 max-w-30 max-h-30"
+                    @click="braceletMakerStore.removeCharm(charm)"
                 />
             </template>
             <p v-else class="text-8xl font-serif uppercase text-center">bracelet preview</p>
