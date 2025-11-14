@@ -9,11 +9,13 @@ const metalSwitchStore = useMetalSwitchStore()
 const braceletMakerStore = useBraceletMaker()
 
 const previewArea = ref<HTMLElement | null>(null)
+const showPreview = ref(true)
 
 const hasCharms = computed(
     (): boolean =>
+        showPreview.value &&
         Array.isArray(braceletMakerStore.bracelet.charms) &&
-        braceletMakerStore.bracelet.charms.length > 0
+        braceletMakerStore.bracelet.charms.length > 0,
 )
 
 function copyDesignCode() {
@@ -36,6 +38,10 @@ function downloadPreview() {
             })
     }
 }
+
+function togglePreview() {
+    showPreview.value = !showPreview.value
+}
 </script>
 
 <template>
@@ -51,7 +57,9 @@ function downloadPreview() {
                 />
             </div>
 
-            <p v-else class="text-8xl font-serif uppercase text-center">bracelet preview</p>
+            <p v-if="showPreview && !hasCharms" class="text-8xl font-serif uppercase text-center">
+                bracelet preview
+            </p>
 
             <div class="flex justify-center items-center space-x-2">
                 <button class="bg-gray-200 p-3" @click="braceletMakerStore.clearCharms">
@@ -59,6 +67,9 @@ function downloadPreview() {
                 </button>
                 <button class="bg-gray-200 p-3" @click="copyDesignCode">Copy design code</button>
                 <button class="bg-gray-200 p-3" @click="downloadPreview">Download Design</button>
+                <button class="bg-gray-200 p-3" @click="togglePreview">
+                    {{ showPreview ? 'Close' : 'Open' }} Preview
+                </button>
             </div>
         </div>
     </section>
