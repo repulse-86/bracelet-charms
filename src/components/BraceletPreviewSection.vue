@@ -2,20 +2,22 @@
 import BraceletCharm from './BraceletCharm.vue'
 import { useMetalSwitchStore } from '@/stores/metal-switcher'
 import { useBraceletMaker } from '@/stores/bracelet-maker'
+import { computed } from 'vue'
 
 const metalSwitchStore = useMetalSwitchStore()
 const braceletMakerStore = useBraceletMaker()
+
+const hasCharms = computed(
+    (): boolean =>
+        Array.isArray(braceletMakerStore.bracelet.charms) &&
+        braceletMakerStore.bracelet.charms.length > 0,
+)
 </script>
 
 <template>
-    <section>
+    <section class="space-y-4">
         <div class="bg-gray-50 p-4 flex justify-center items-center space-x-2 overflow-x-auto">
-            <template
-                v-if="
-                    braceletMakerStore.bracelet.charms &&
-                    braceletMakerStore.bracelet.charms.length > 0
-                "
-            >
+            <template v-if="hasCharms">
                 <BraceletCharm
                     v-for="charm in braceletMakerStore.bracelet.charms"
                     :key="charm.id"
@@ -25,7 +27,14 @@ const braceletMakerStore = useBraceletMaker()
                     @click="braceletMakerStore.removeCharm(charm)"
                 />
             </template>
+
             <p v-else class="text-8xl font-serif uppercase text-center">bracelet preview</p>
+        </div>
+
+        <div v-if="hasCharms" class="flex justify-center items-center space-x-2">
+            <button class="bg-gray-200 p-3" @click="braceletMakerStore.clearCharms">
+                Start over
+            </button>
         </div>
     </section>
 </template>

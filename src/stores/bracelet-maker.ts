@@ -27,9 +27,14 @@ export const useBraceletMaker = defineStore('bracelet-maker', () => {
         }
     }
 
+    const clearCharms = () => {
+        bracelet.value.charms = []
+    }
+
     return {
         bracelet,
         addCharm,
         removeCharm,
+        clearCharms,
     }
 })
