@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import HomeView from './views/HomeView.vue'
 </script>
 
 <template>
-    <main class="p-4">
-
+    <main class="max-w-7xl mx-auto p-4">
+        <HomeView />
     </main>
 </template>
 
