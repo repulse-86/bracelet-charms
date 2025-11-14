@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Charm } from '@/types/Charm'
+import type { Charm } from '@/types/charm'
 import { Metal, MetalColor } from '@/types/metal'
 import { computed } from 'vue'
 

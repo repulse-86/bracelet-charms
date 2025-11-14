@@ -1,4 +1,4 @@
-import type { Charm } from '@/types/Charm'
+import type { Charm } from '@/types/charm'
 
 export const charms: Charm[] = [
     {

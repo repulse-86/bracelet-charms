@@ -2,7 +2,7 @@ import type { Bracelet } from '@/types/bracelet'
 import { ref, watchEffect, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { useMetalSwitchStore } from '@/stores/metal-switcher'
-import type { Charm } from '@/types/Charm'
+import type { Charm } from '@/types/charm'
 
 export const useBraceletMaker = defineStore('bracelet-maker', () => {
     const metalSwitchStore = useMetalSwitchStore()
