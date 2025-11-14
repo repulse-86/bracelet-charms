@@ -1,5 +1,5 @@
 import type { Bracelet } from '@/types/bracelet'
-import { ref, watchEffect } from 'vue'
+import { ref, watchEffect, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { useMetalSwitchStore } from '@/stores/metal-switcher'
 import type { Charm } from '@/types/Charm'
@@ -10,6 +10,13 @@ export const useBraceletMaker = defineStore('bracelet-maker', () => {
     const bracelet = ref<Bracelet>({
         charms: [],
         metal: metalSwitchStore.selectedMetal,
+    })
+
+    const braceletSummary = computed(() => {
+        const charms = bracelet.value.charms ?? []
+        const total = charms.reduce((t, c) => t + c.price, 0)
+        const codes = charms.map((c) => c.code).join('-')
+        return { total, codes }
     })
 
     watchEffect(() => {
@@ -36,5 +43,6 @@ export const useBraceletMaker = defineStore('bracelet-maker', () => {
         addCharm,
         removeCharm,
         clearCharms,
+        braceletSummary,
     }
 })

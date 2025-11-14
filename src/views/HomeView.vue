@@ -4,7 +4,6 @@ import BraceletDetailsSection from '@/components/BraceletDetailsSection.vue'
 import BraceletPreviewSection from '@/components/BraceletPreviewSection.vue'
 import CharmsContainerSection from '@/components/CharmsContainerSection.vue'
 import HeaderSection from '@/components/HeaderSection.vue'
-import { useBraceletMaker } from '@/stores/bracelet-maker'
 </script>
 
 <template>
@@ -12,7 +11,7 @@ import { useBraceletMaker } from '@/stores/bracelet-maker'
         <HeaderSection />
         <BaseColorSwitcherSection />
         <BraceletPreviewSection />
-        <BraceletDetailsSection :bracelet="useBraceletMaker().bracelet" />
+        <BraceletDetailsSection />
         <CharmsContainerSection />
     </div>
 </template>

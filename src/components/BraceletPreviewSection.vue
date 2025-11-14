@@ -12,6 +12,12 @@ const hasCharms = computed(
         Array.isArray(braceletMakerStore.bracelet.charms) &&
         braceletMakerStore.bracelet.charms.length > 0,
 )
+
+function copyDesignCode() {
+    navigator.clipboard.writeText(braceletMakerStore.braceletSummary.codes).then(() => {
+        alert('Design code copied!')
+    })
+}
 </script>
 
 <template>
@@ -35,6 +41,7 @@ const hasCharms = computed(
             <button class="bg-gray-200 p-3" @click="braceletMakerStore.clearCharms">
                 Start over
             </button>
+            <button class="bg-gray-200 p-3" @click="copyDesignCode">Copy design code</button>
         </div>
     </section>
 </template>
