@@ -2,8 +2,10 @@
 import { charms } from '@/data/charms'
 import BraceletCharm from './BraceletCharm.vue'
 import { useMetalSwitchStore } from '@/stores/metal-switcher'
+import { useBraceletMaker } from '@/stores/bracelet-maker'
 
 const metalSwitchStore = useMetalSwitchStore()
+const braceletMakerStore = useBraceletMaker()
 </script>
 
 <template>
@@ -13,6 +15,7 @@ const metalSwitchStore = useMetalSwitchStore()
             :key="charm.id"
             :charm="charm"
             :metal="metalSwitchStore.selectedMetal"
+            @click="braceletMakerStore.addCharm(charm)"
         />
     </section>
 </template>
