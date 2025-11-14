@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import HeaderSection from '@/components/HeaderSection.vue'
 </script>
 
 <template>
     <div class="space-y-8">
-        <h3>Home</h3>
+        <HeaderSection />
     </div>
 </template>
